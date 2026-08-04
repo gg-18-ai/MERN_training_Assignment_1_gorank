@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gorank Menaria - Personal Portfolio</title>
+    <style>
+        /* ==========================================================================
+           1. RESET & BASE STYLES
+           ========================================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7;
+            color: #2b3648;
+            background-color: #ffffff;
+        }
+
+        a {
+            color: #0056b3;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: #003d80;
+            text-decoration: underline;
+        }
+
+        /* Container for central alignment and consistent padding */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Common Section Styling */
+        section {
+            padding: 70px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.1rem;
+            color: #0056b3;
+            margin-bottom: 35px;
+            position: relative;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: #0056b3;
+            margin: 10px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        /* ==========================================================================
+           2. HEADER & NAVIGATION
+           ========================================================================== */
+        header {
+            background-color: #ffffff;
+            border-bottom: 2px solid #0056b3;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            color: #0056b3;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .logo p {
+            font-size: 0.85rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 12px;
+        }
+
+        .nav-links a {
+            color: #334155;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: #e8f1fd;
+            color: #0056b3;
+            text-decoration: none;
+        }
+
+        /* ==========================================================================
+           3. HERO SECTION
+           ========================================================================== */
+        .hero {
+            background-color: #f0f5fc;
+            padding: 90px 0;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .profile-pic {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #ffffff;
+            box-shadow: 0 6px 16px rgba(0, 86, 179, 0.18);
+            margin-bottom: 24px;
+        }
+
+        .hero h2 {
+            font-size: 2.6rem;
+            color: #0056b3;
+            margin-bottom: 16px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #475569;
+            margin-bottom: 30px;
+            line-height: 1.75;
+        }
+
+        /* Simple Button Style */
+        .btn {
+            display: inline-block;
+            background-color: #0056b3;
+            color: #ffffff;
+            padding: 13px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: 2px solid #0056b3;
+            border-radius: 6px;
+            cursor: pointer;
+            box-shadow: 0 3px 8px rgba(0, 86, 179, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: #003d80;
+            border-color: #003d80;
+            color: #ffffff;
+            text-decoration: none;
+            box-shadow: 0 5px 12px rgba(0, 61, 128, 0.3);
+        }
+
+        /* ==========================================================================
+           4. ABOUT ME SECTION
+           ========================================================================== */
+        .about-section {
+            background-color: #ffffff;
+        }
+
+        .about-content {
+            background-color: #f8fafc;
+            padding: 35px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            border-left: 5px solid #0056b3;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.03);
+        }
+
+        .about-content p {
+            font-size: 1.08rem;
+            color: #334155;
+            line-height: 1.8;
+        }
+
+        /* ==========================================================================
+           5. SKILLS SECTION
+           ========================================================================== */
+        .skills-section {
+            background-color: #f8fafc;
+        }
+
+        .skills-grid {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .skill-box {
+            flex: 1;
+            min-width: 270px;
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-top: 4px solid #0056b3;
+            border-radius: 8px;
+            padding: 24px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.03);
+        }
+
+        .skill-box h3 {
+            color: #0056b3;
+            font-size: 1.25rem;
+            margin-bottom: 18px;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .skill-box ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-box ul li {
+            background-color: #e8f1fd;
+            color: #0056b3;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.92rem;
+            font-weight: 600;
+            border: 1px solid #cce0ff;
+        }
+
+        /* ==========================================================================
+           6. PROJECTS SECTION
+           ========================================================================== */
+        .projects-section {
+            background-color: #ffffff;
+        }
+
+        .projects-grid {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .project-card {
+            flex: 1;
+            min-width: 280px;
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-top: 4px solid #0056b3;
+            border-radius: 8px;
+            padding: 28px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        /* Subtle hover effect on project cards */
+        .project-card:hover {
+            transform: translateY(-4px);
+            border-color: #0056b3;
+            box-shadow: 0 8px 20px rgba(0, 86, 179, 0.12);
+        }
+
+        .project-card h3 {
+            color: #0056b3;
+            font-size: 1.35rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .project-card p {
+            color: #475569;
+            font-size: 0.98rem;
+            line-height: 1.65;
+        }
+
+        /* ==========================================================================
+           7. CONTACT SECTION
+           ========================================================================== */
+        .contact-section {
+            background-color: #f8fafc;
+        }
+
+        .contact-box {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 35px;
+            max-width: 620px;
+            margin: 0 auto;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.03);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 1.05rem;
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+
+        .contact-item strong {
+            color: #0056b3;
+            width: 110px;
+            font-weight: 600;
+        }
+
+        .contact-item a {
+            font-weight: 500;
+        }
+
+        /* ==========================================================================
+           8. FOOTER
+           ========================================================================== */
+        footer {
+            background-color: #ffffff;
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+            padding: 25px 0;
+            color: #64748b;
+            font-size: 0.92rem;
+        }
+
+        /* ==========================================================================
+           9. RESPONSIVE MEDIA QUERIES
+           ========================================================================== */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 8px;
+                width: 100%;
+            }
+
+            .hero {
+                padding: 60px 0;
+            }
+
+            .hero h2 {
+                font-size: 2.1rem;
+            }
+
+            .skills-grid, .projects-grid {
+                flex-direction: column;
+            }
+
+            .contact-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+
+            .contact-item strong {
+                width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================================================
+         HEADER / NAVIGATION
+         ========================================================================== -->
+    <header>
+        <div class="container navbar">
+            <div class="logo">
+                <h1>Gorank Menaria</h1>
+                <p>Computer Science Engineering Student</p>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ==========================================================================
+         HERO SECTION
+         ========================================================================== -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <img src="profile.jpg" alt="Gorank Menaria" class="profile-pic">
+            <h2>Hi, I'm Gorank Menaria</h2>
+            <p>I am a Computer Science Engineering student passionate about software development, AI, mobile app development, and learning new technologies. I enjoy building projects that solve real-world problems and continuously improving my programming skills.</p>
+            <a href="#projects" class="btn">View Projects</a>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         ABOUT ME SECTION
+         ========================================================================== -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <p>I am a Computer Science Engineering student with a keen interest in Artificial Intelligence and software development. Currently, I am focused on learning web and mobile application development technologies. My goal is to become a successful software developer by working on innovative projects and continuously mastering modern technologies to address real-world challenges.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         SKILLS SECTION
+         ========================================================================== -->
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+
+                <!-- Programming Languages -->
+                <div class="skill-box">
+                    <h3>Programming Languages</h3>
+                    <ul>
+                        <li>C</li>
+                        <li>C++</li>
+                        <li>Python</li>
+                        <li>JavaScript</li>
+                        <li>Kotlin</li>
+                    </ul>
+                </div>
+
+                <!-- Web Technologies -->
+                <div class="skill-box">
+                    <h3>Web Technologies</h3>
+                    <ul>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>React</li>
+                        <li>Node.js</li>
+                        <li>Express.js</li>
+                    </ul>
+                </div>
+
+                <!-- Tools -->
+                <div class="skill-box">
+                    <h3>Tools</h3>
+                    <ul>
+                        <li>Git</li>
+                        <li>GitHub</li>
+                        <li>VS Code</li>
+                        <li>Android Studio</li>
+                        <li>Postman</li>
+                        <li>Firebase</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         PROJECTS SECTION
+         ========================================================================== -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <h3>TaxGranth</h3>
+                    <p>A taxation management system developed for a CA firm using React Native, React, Express.js, and Firebase.</p>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <h3>ZeroTrace</h3>
+                    <p>A secure certificate verification and device tracking project.</p>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <h3>AI Daily Planner</h3>
+                    <p>An AI-powered productivity and task management application.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         CONTACT SECTION
+         ========================================================================== -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-box">
+                <div class="contact-item">
+                    <strong>Name:</strong> Gorank Menaria
+                </div>
+                <div class="contact-item">
+                    <strong>Email:</strong> <a href="mailto:your-email@example.com">your-email@example.com</a>
+                </div>
+                <div class="contact-item">
+                    <strong>GitHub:</strong> <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">github.com/yourusername</a>
+                </div>
+                <div class="contact-item">
+                    <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">linkedin.com/in/yourusername</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         FOOTER
+         ========================================================================== -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Gorank Menaria. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
