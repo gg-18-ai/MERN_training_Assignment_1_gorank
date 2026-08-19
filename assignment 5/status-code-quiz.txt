@@ -1,0 +1,8 @@
+1. Naya review ban gaya -> 201
+2. rating: 15 bheja -> 400
+3. Token bheja hi nahi -> 401
+4. Token sahi hai par role user hai, delete admin-only hai -> 403
+5. /getSingleReview/<id jo exist nahi karti> -> 404
+6. Wahi email se dobara register -> 409
+7. Search me kuch nahi mila -> 200
+8. Mongoose connection tut gaya -> 500
